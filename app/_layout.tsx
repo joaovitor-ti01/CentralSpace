@@ -2,29 +2,46 @@ import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import { MissionProvider } from '../context/MissionContext';
 
-export default function RootLayout() {
+export default function Layout() {
   return (
     <MissionProvider>
-      <Tabs screenOptions={{
-        tabBarActiveTintColor: '#00e5ff',
-        tabBarInactiveTintColor: '#888',
-        tabBarStyle: { backgroundColor: '#0a0f24', borderTopColor: '#1f293d' },
-        headerStyle: { backgroundColor: '#0a0f24' },
-        headerTitleStyle: { color: '#fff', fontWeight: 'bold' },
-      }}>
-        <Tabs.Screen 
-          name="index" 
-          options={{ 
-            title: "Painel de Controle",
-            tabBarIcon: ({ color }) => <Ionicons name="planet-outline" size={24} color={color} />
-          }} 
+      <Tabs
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#020617',
+          },
+          headerTintColor: '#fff',
+
+          tabBarStyle: {
+            backgroundColor: '#020617',
+            borderTopColor: '#0f172a',
+            height: 70,
+            paddingBottom: 8,
+            paddingTop: 8,
+          },
+
+          tabBarActiveTintColor: '#00e5ff',
+          tabBarInactiveTintColor: '#64748b',
+        }}
+      >
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: 'Painel',
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="planet-outline" size={24} color={color} />
+            ),
+          }}
         />
-        <Tabs.Screen 
-          name="lancamento" 
-          options={{ 
-            title: "Nova Missão",
-            tabBarIcon: ({ color }) => <Ionicons name="rocket-outline" size={24} color={color} />
-          }} 
+
+        <Tabs.Screen
+          name="lancamento"
+          options={{
+            title: 'Missões',
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="rocket-outline" size={24} color={color} />
+            ),
+          }}
         />
       </Tabs>
     </MissionProvider>
