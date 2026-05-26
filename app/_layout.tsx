@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
+import React from 'react';
 import { MissionProvider } from '../context/MissionContext';
 
 export default function Layout() {
@@ -7,29 +8,39 @@ export default function Layout() {
     <MissionProvider>
       <Tabs
         screenOptions={{
-          headerStyle: {
-            backgroundColor: '#020617',
-          },
-          headerTintColor: '#fff',
-
           tabBarStyle: {
-            backgroundColor: '#020617',
-            borderTopColor: '#0f172a',
-            height: 70,
-            paddingBottom: 8,
-            paddingTop: 8,
+            backgroundColor: '#0b1329',
+            borderTopColor: '#1e293b',
+            height: 100,          // Altura estendida para garantir conforto no toque
+            paddingBottom: 38,   // Empurra os botões bem para cima, saindo da área nativa do celular
+            paddingTop: 10,
+            position: 'absolute', // Garante flutuação correta sobre o layout
+            bottom: 0,
+            left: 0,
+            right: 0,
           },
-
           tabBarActiveTintColor: '#00e5ff',
           tabBarInactiveTintColor: '#64748b',
+          headerStyle: {
+            backgroundColor: '#030712',
+            borderBottomWidth: 1,
+            borderBottomColor: '#1e293b',
+          },
+          headerTintColor: '#ffffff',
+          headerTitleStyle: {
+            fontWeight: '900',
+            fontSize: 16,
+            letterSpacing: 1,
+          }
         }}
       >
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Painel',
-            tabBarIcon: ({ color }) => (
-              <Ionicons name="planet-outline" size={24} color={color} />
+            title: 'PAINEL DE CONTROLE',
+            tabBarLabel: 'Painel',
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons name={focused ? "planet" : "planet-outline"} size={22} color={color} />
             ),
           }}
         />
@@ -37,9 +48,10 @@ export default function Layout() {
         <Tabs.Screen
           name="lancamento"
           options={{
-            title: 'Missões',
-            tabBarIcon: ({ color }) => (
-              <Ionicons name="rocket-outline" size={24} color={color} />
+            title: 'REGISTRO DE VETOR',
+            tabBarLabel: 'Lançar',
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons name={focused ? "rocket" : "rocket-outline"} size={22} color={color} />
             ),
           }}
         />
